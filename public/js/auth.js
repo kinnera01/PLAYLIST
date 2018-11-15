@@ -21,6 +21,7 @@ googleApiClientReady = function () {
 }
 
 function checkAuth() {
+  console.log("I auth");
   gapi.auth.authorize({
     client_id: OAUTH2_CLIENT_ID,
     scope: OAUTH2_SCOPES,
@@ -36,6 +37,7 @@ function handleAuthResult(authResult) {
     loadAPIClientInterfaces();
   } else {
     $('#login-link').click(function () {
+      console.log("In click");
       gapi.auth.authorize({
         client_id: OAUTH2_CLIENT_ID,
         scope: OAUTH2_SCOPES,
