@@ -156,8 +156,8 @@ console.log(data[counter])
       }
     });
     //console.log(request)
-    request.execute(function (response) {
-      $("#status").html("<pre>" + JSON.stringify(response.result.id) + "</pre>" + "<br />");
+    request.execute(function(response) {
+      $("#status").append("<pre>" + JSON.stringify(response.result.id) + "</pre>" + "<br />");
     });
   }
 

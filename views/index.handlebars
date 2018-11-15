@@ -1,41 +1,77 @@
-{{!-- <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div> --}}
+
 <style>
   body{
     padding: 50px;
-    background-color:aquamarine;
+   background-image: url("https://i.pinimg.com/originals/b5/3b/fe/b53bfecf20eab2012dfa7a4f6017a814.jpg");
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   }
+  h5{
+    color: bisque
+  }
+  label{
+    color: #ce844a !important;
+    font-size: 20px  !important;
+  }
+input{
+  color:#63894F !important;
+}
+span #status,h6{
+  color: #637BAB !important;
+}
 </style>
+<div class="row">
+  <div id="login-container" class="pre-auth">
+    <h5>This application requires access to your YouTube account. Please
+    <a href="#" id="login-link">authorize</a> to continue.</h5>
+  </div>
+    <form class="col s10">
+      <div class="row" id="buttons">
+        <div class="input-field col s10">
+          <input placeholder="Placeholder" id="Title" type="text" class="validate">
+          <label for="Playlist Name">Playlist_Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10">
+           <input id="Description"placeholder="Description"  type="text" class="validate">
+          <label for="Description">Playlist Description</label>
+        </div>
+      </div>
+      <a class="btn-floating disabled right btn-large waves-effect waves-light red" id="playlist-button">Create Playlist</a>
+      <div class="row">
+        <div class="input-field col s10">
+          <input id="playlist-id" type="text" name='playid' value='' placeholder="Playlist ID"  class="validate">
+          <label for="PlaylistId">Current Playlist Id</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10">
+          <input id="year" placeholder="Song Year"  type="number" name="year" class="validate">
+          <label for="year">Year</label>
+        </div>
+      </div>
+      {{!-- <div class="row">
+     <div class="input-field col s10">
+          <input  id="video-id" class="form-control" name='videoid' value="" class="validate">
+          <label for="year">Year</label>
+        </div>
+      </div> --}}
+      <a class="btn-floating right btn-large waves-effect waves-light red" id="Addvideo"><i class="material-icons">add</i>Add Songs to playlist</a>
+    </form>
+    <h5>Playlist:  </h5>
+  <span id="playlist-title"></span>
+  <p id="playlist-description"></p>
+  <p id="playlist-Id"></p>
+  <div id="playlist-container">
+    <h6>
+    <span id="status">No Videos</span></h6>
+  </div>
+  </div>
+{{!--         
 <div>
-    <h1 class="text-center">Upload/Create a Youtube Playlist </h1>
+  
   </div>
   </br>
   <div id="login-container" class="pre-auth">
@@ -74,16 +110,9 @@
       </div>
     </br>
       <button type="button" class="btn btn-primary pull-right" id="Addvideo">Add to current playlist</button>
-    </div>
-  </form>
-  <h2>Playlist:  </h2>
-  <span id="playlist-title"></span>
-  <p id="playlist-description"></p>
-  <p id="playlist-Id"></p>
-  <div id="playlist-container">
-    <h5>
-    <span id="status">No Videos</span></h5>
-  </div>
+    </div> --}}
+  {{!-- </form> --}}
+ 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {{!-- <script src="/js/index.js"></script> --}}
