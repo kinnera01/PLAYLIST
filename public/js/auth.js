@@ -110,17 +110,17 @@ $("#Addvideo").on("click", function () {
       // youtubeids.push(element.youtubeId);
       console.log(element);
       // addToPlaylist(element);
-      function myLoop(element) {
-        addToPlaylist(element);
-        setTimeout(function() {
-            counter++;
-            if(counter < links.length)
-               myLoop(links[counter]);
-        }, 3000);
-  }
+   myLoop(element)
     });
   })
- 
+  function myLoop(element) {
+    addToPlaylist(element);
+    setTimeout(function() {
+        counter++;
+        if(counter < links.length)
+           myLoop(links[counter]);
+    }, 3000);
+}
   function addToPlaylist(id, startPos, endPos) {
     
     var playid = $("#playlist-id").val();
