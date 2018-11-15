@@ -143,7 +143,7 @@ $("#Addvideo").on("click", function () {
     });
     //console.log(request)
     request.execute(function(response) {
-      $("#status").html("<pre>" + JSON.stringify(response.result) + "</pre>");
+      $("#status").html("<pre>" + JSON.stringify(response.result.id) + "</pre>" + "<br />");
     });
   }
   function addTheseVideosToPlaylist() {
