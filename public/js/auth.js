@@ -93,15 +93,16 @@ $("#playlist-button").on("click", function () {
   });
 
 })
-$("#playlist-button").on("click", function () {
+$("#playlist-button").on("click", function() {
   var result = {
     id: $("#playlist-id").val(),
     year: $("#year").val(),
     videoid: $("#video-id").val()
   }
-  $.post("/api/songs", result, function (data) {
+  console.log(result);
+  $.post("/songs", result, function(data) {
     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-    console.log("data posted to routes")
+    console.log("data posted to routes");
   })
 })
 // // Create a private playlist.
