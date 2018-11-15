@@ -67,7 +67,7 @@ $("#playlist-button").on("click", function () {
 
   var title = $("#Title").val();
   var description = $("#Desciption").val();
-
+console.log(title,description)
   var request = gapi.client.youtube.playlists.insert({
     part: "snippet,status",
     resource: {
