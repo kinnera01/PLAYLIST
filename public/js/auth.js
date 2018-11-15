@@ -28,13 +28,13 @@ function checkAuth() {
   }, handleAuthResult);
 }
 function handleAuthResult(authResult) {
+  console.log("in auth res")
   if (authResult && !authResult.error) {
 
     $('.pre-auth').hide();
     $('.post-auth').show();
     loadAPIClientInterfaces();
   } else {
-    
     $('#login-link').click(function () {
       gapi.auth.authorize({
         client_id: OAUTH2_CLIENT_ID,
