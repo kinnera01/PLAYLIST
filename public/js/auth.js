@@ -123,7 +123,7 @@ $("#Addvideo").on("click", function () {
         if (counter < data.length)
 console.log(data[counter])
           myLoop(data[counter]);
-      }, 3000);
+      }, 1500);
     }
   })
 
