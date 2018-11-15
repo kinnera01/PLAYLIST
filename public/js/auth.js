@@ -93,7 +93,7 @@ $("#playlist-button").on("click", function () {
   });
 
 })
-$("#playlist-button").on("click", function() {
+$("#Addvideo").on("click", function() {
   var result = {
     id: $("#playlist-id").val(),
     year: $("#year").val(),
