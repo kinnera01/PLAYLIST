@@ -105,7 +105,6 @@ $("#Addvideo").on("click", function () {
     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
     console.log("data posted to routes");
     console.log("incoming data", data)
-    videoids = data;
     //   videoids.forEach(element => {
     //     // youtubeids.push(element.youtubeId);
     //     console.log(element);
@@ -114,13 +113,14 @@ $("#Addvideo").on("click", function () {
     //   });
     var counter = 0;
     function addVideosToPlaylist() {
-      myLoop(videoids[0]);
+      myLoop(data[0]);
     }
     function myLoop(video_id) {
       addToPlaylist(video_id);
       setTimeout(function () {
         counter++;
-        if (counter < videoids.length)
+        if (counter < data.length)
+console.log(links[counter])
           myLoop(links[counter]);
       }, 3000);
     }
