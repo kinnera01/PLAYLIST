@@ -1,22 +1,11 @@
-// The client ID is obtained from the {{ Google Cloud Console }}
-// at {{ https://cloud.google.com/console }}.
-// If you run this code from a server other than http://localhost,
-// you need to register your own client ID.
-// var SolrNode = require("solr-node");
-// var client = new SolrNode({
-//   host: "aurora.cs.rutgers.edu",
-//   port: "8181",
-//   core: "discogs_data_test",
-//   protocol: "http"
-// });
 var OAUTH2_CLIENT_ID = '144598218649-cs7ktbbd4q7ghanjvbluj51d5vt9djok.apps.googleusercontent.com';
 var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube'
 ];
 var videoids;
 
-googleApiClientReady = function () {
-  gapi.auth.init(function () {
+googleApiClientReady = function() {
+  gapi.auth.init(function() {
     window.setTimeout(checkAuth, 1);
   });
 }
@@ -51,6 +40,7 @@ function handleAuthResult(authResult) {
 
 function loadAPIClientInterfaces() {
   gapi.client.load('youtube', 'v3', function () {
+    console.log("in client loaded")
     handleAPILoaded();
   });
 }
