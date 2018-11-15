@@ -1,0 +1,92 @@
+{{!-- <div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        <h2>This is our Home Page!</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="example-text">Example Text</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <div class="form-group">
+            <label for="example-description">Example Description</label>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Examples:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> --}}
+<style>
+  body{
+    padding: 50px;
+    background-color:aquamarine;
+  }
+</style>
+<div>
+    <h1 class="text-center">Upload/Create a Youtube Playlist </h1>
+  </div>
+  </br>
+  <div id="login-container" class="pre-auth">
+    <h4>This application requires access to your YouTube account. Please
+    <a href="#" id="login-link">authorize</a> to continue.</h4>
+  </div>
+  <form>
+    <div id="buttons">
+      <div class="input-group">
+        <span class="input-group-addon">Title</span>
+        <input id="Title" type="text" class="form-control" name="title" placeholder="Give me a name..">
+      </div>
+    </br>
+      <div class="input-group">
+        <span class="input-group-addon">Playlist Description</span>
+        <input id="Desciption" class="form-control" name="description" placeholder='Please be Speicific..' type="text" />
+      </div>
+    </br>
+   
+      <button type="button" class="btn btn-primary pull-right" id="playlist-button" disabled onclick="createPlaylist()">Create a new Playlist</button>
+  </br>
+    </br>
+      <div class="input-group">
+        <span class="input-group-addon">Current Playlist Id</span>
+        <input id="playlist-id" class="form-control"  name='playid' value='' placeholder='Enter your existing ID or Create a new playlist' type="text" />
+      </div>
+    </br>
+    <div class="input-group">
+      <span class="input-group-addon">Songs Year</span>
+      <input id="year" class="form-control" name="year" placeholder='year wise top songs' type="text" />
+    </div>
+  </br>
+      <div class="input-group">
+        <span class="input-group-addon">Video Id</span>
+        <input id="video-id" class="form-control" name='videoid' value='GZG9G5txtaE' type="text" />
+      </div>
+    </br>
+      <button type="button" class="btn btn-primary pull-right" onclick="addVideoToPlaylist()">Add to current playlist</button>
+    </div>
+  </form>
+  <h2>Playlist:  </h2>
+  <span id="playlist-title"></span>
+  <p id="playlist-description"></p>
+  <p id="playlist-Id"></p>
+  <div id="playlist-container">
+    <h5>
+    <span id="status">No Videos</span></h5>
+  </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/playlist_updates.js"></script>
+ <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
