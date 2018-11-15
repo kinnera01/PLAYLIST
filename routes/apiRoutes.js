@@ -16,8 +16,21 @@ module.exports = function(app) {
     res.render("index");
   });
 app.post("/api/songs",function(req,res){
-  alert(req.body);
+  console.log(req.body);
 })
+// app.get('/getProduct',
+//  function (req, res) 
+//  { 
+// var strQuery = client.query().q('productId:9788700075740');
+//  client.search(strQuery, function (err, result) {
+//    if (err) {
+//       console.log(err);
+//       return;
+//    }
+//    console.log('Response:', result.response);
+//    res.send(result.response);
+// });
+//  }); 
   // // Create a new example
   // app.post("/api/examples", function(req, res) {
   //   db.Example.create(req.body).then(function(dbExample) {
