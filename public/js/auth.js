@@ -64,7 +64,6 @@ function enableForm() {
 }
 
 $("#playlist-button").on("click", function () {
-
   var title = $("#Title").val();
   var description = $("#Description").val();
 console.log(title,description)
@@ -80,7 +79,7 @@ console.log(title,description)
       }
     }
   });
-  request.execute(function (response) {
+  request.execute(function(response) {
     var result = response.result;
     console.log(result);
     if (result) {
