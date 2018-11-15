@@ -104,7 +104,8 @@ $("#Addvideo").on("click", function () {
   $.post("/songs", result, function (data) {
     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
     console.log("data posted to routes");
-    console.log("incoming data", data)
+    console.log("incoming data", data);
+    addVideosToPlaylist();
     //   videoids.forEach(element => {
     //     // youtubeids.push(element.youtubeId);
     //     console.log(element);
@@ -160,20 +161,20 @@ console.log(links[counter])
     });
   }
 
-  function addTheseVideosToPlaylist() {
-    var links = youtubeids;
-    var counter = 0;
+  // function addTheseVideosToPlaylist() {
+  //   var links = youtubeids;
+  //   var counter = 0;
 
-    function addVideosToPlaylist() {
-      myLoop(links[0]);
-    }
+  //   function addVideosToPlaylist() {
+  //     myLoop(links[0]);
+  //   }
 
-    function myLoop(video_id) {
-      addToPlaylist(video_id);
-      setTimeout(function () {
-        counter++;
-        if (counter < links.length) myLoop(links[counter]);
-      }, 3000);
-    }
-  }
+  //   function myLoop(video_id) {
+  //     addToPlaylist(video_id);
+  //     setTimeout(function () {
+  //       counter++;
+  //       if (counter < links.length) myLoop(links[counter]);
+  //     }, 3000);
+  //   }
+  // }
 })
