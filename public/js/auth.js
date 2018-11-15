@@ -9,7 +9,7 @@
 //   core: "discogs_data_test",
 //   protocol: "http"
 // });
-var OAUTH2_CLIENT_ID = '144598218649-l78ovdbcde6bc30j11ac8bmjeqtbbuuj.apps.googleusercontent.com';
+var OAUTH2_CLIENT_ID = '144598218649-cs7ktbbd4q7ghanjvbluj51d5vt9djok.apps.googleusercontent.com';
 var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube'
 ];
