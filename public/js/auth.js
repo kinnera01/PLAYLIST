@@ -121,8 +121,8 @@ $("#Addvideo").on("click", function () {
       setTimeout(function () {
         counter++;
         if (counter < data.length)
-console.log(links[counter])
-          myLoop(links[counter]);
+console.log(data[counter])
+          myLoop(data[counter]);
       }, 3000);
     }
   })
