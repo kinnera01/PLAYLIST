@@ -106,23 +106,28 @@ $("#Addvideo").on("click", function () {
     console.log("data posted to routes");
     console.log("incoming data", data)
     videoids = data;
-    videoids.forEach(element => {
-      // youtubeids.push(element.youtubeId);
-      console.log(element);
-      // addToPlaylist(element);
-   myLoop(element)
-    });
-  })
-  function myLoop(element) {
-    addToPlaylist(element);
-    setTimeout(function() {
+    //   videoids.forEach(element => {
+    //     // youtubeids.push(element.youtubeId);
+    //     console.log(element);
+    //     // addToPlaylist(element);
+    //  myLoop(element)
+    //   });
+    var counter = 0;
+    function addVideosToPlaylist() {
+      myLoop(videoids[0]);
+    }
+    function myLoop(video_id) {
+      addToPlaylist(video_id);
+      setTimeout(function () {
         counter++;
-        if(counter < links.length)
-           myLoop(links[counter]);
-    }, 3000);
-}
+        if (counter < videoids.length)
+          myLoop(links[counter]);
+      }, 3000);
+    }
+  })
+
   function addToPlaylist(id, startPos, endPos) {
-    
+
     var playid = $("#playlist-id").val();
     console.log(
       "in addToPlaylist with " + id + "sending to playlist : " + playid
@@ -150,19 +155,22 @@ $("#Addvideo").on("click", function () {
       }
     });
     //console.log(request)
-    request.execute(function(response) {
+    request.execute(function (response) {
       $("#status").html("<pre>" + JSON.stringify(response.result.id) + "</pre>" + "<br />");
     });
   }
+
   function addTheseVideosToPlaylist() {
     var links = youtubeids;
     var counter = 0;
+
     function addVideosToPlaylist() {
       myLoop(links[0]);
     }
+
     function myLoop(video_id) {
       addToPlaylist(video_id);
-      setTimeout(function() {
+      setTimeout(function () {
         counter++;
         if (counter < links.length) myLoop(links[counter]);
       }, 3000);
