@@ -20,13 +20,16 @@ input{
 span #status,h6{
   color: #637BAB !important;
 }
+#status{
+  word-break: break-all;
+}
 </style>
 <div class="row">
   <div id="login-container" class="pre-auth">
     <h5>This application requires access to your YouTube account. Please
     <a href="#" id="login-link">authorize</a> to continue.</h5>
   </div>
-    <form class="col s10">
+    <form class="col s8">
       <div class="row" id="buttons">
         <div class="input-field col s10">
           <input placeholder="Placeholder" id="Title" type="text" class="validate">
@@ -39,7 +42,7 @@ span #status,h6{
           <label for="Description">Playlist Description</label>
         </div>
       </div>
-      <a class="btn-floating  right btn-large waves-effect waves-light red" disabled id="playlist-button">Create Playlist</a>
+      <a class="btn-floating  center btn-large waves-effect waves-light red" disabled id="playlist-button">Create Playlist</a>
       <div class="row">
         <div class="input-field col s10">
           <input id="playlist-id" type="text" name='playid' value='' placeholder="Playlist ID"  class="validate">
@@ -58,13 +61,13 @@ span #status,h6{
           <label for="year">Year</label>
         </div>
       </div> --}}
-      <a class="btn-floating right btn-large waves-effect waves-light red" id="Addvideo"><i class="material-icons">add</i>Add Songs to playlist</a>
+      <a class="btn-floating center btn-large waves-effect waves-light red" id="Addvideo"><i class="material-icons">add</i>Add Songs to playlist</a>
     </form>
     <h5>Playlist:  </h5>
   <span id="playlist-title"></span>
   <p id="playlist-description"></p>
   <p id="playlist-Id"></p>
-  <div id="playlist-container">
+  <div id="playlist-container"  class="col s4"> 
     <h6>
     <span id="status">No Videos</span></h6>
   </div>
