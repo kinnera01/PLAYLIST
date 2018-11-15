@@ -28,6 +28,7 @@ function checkAuth() {
     immediate: true
   }, handleAuthResult);
 }
+
 function handleAuthResult(authResult) {
   console.log("in auth res")
   if (authResult && !authResult.error) {
@@ -52,6 +53,7 @@ function loadAPIClientInterfaces() {
     handleAPILoaded();
   });
 }
+
 function handleAPILoaded() {
   enableForm();
 }
@@ -60,6 +62,48 @@ function enableForm() {
   $("#playlist-button").attr("disabled", false);
 }
 
+$("#playlist-button").on("click", function () {
+
+  var title = $("#Title").val();
+  var description = $("#Desciption").val();
+
+  var request = gapi.client.youtube.playlists.insert({
+    part: "snippet,status",
+    resource: {
+      snippet: {
+        title: title,
+        description: description
+      },
+      status: {
+        privacyStatus: "public"
+      }
+    }
+  });
+  request.execute(function (response) {
+    var result = response.result;
+    console.log(result);
+    if (result) {
+      playlistId = result.id;
+      // console.log(playlistId)
+      $("#playlist-id").val(playlistId);
+      $("#playlist-Id").html(result.id);
+    } else {
+      $("#status").html("Could not create playlist");
+    }
+  });
+
+})
+$("#playlist-button").on("click", function () {
+  var result = {
+    id: $("#playlist-id").val(),
+    year: $("#year").val(),
+    videoid: $("#video-id").val()
+  }
+  $.post("/api/songs", result, function (data) {
+    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+    console.log("data posted to routes")
+  })
+})
 // // Create a private playlist.
 // function createPlaylist() {
 //   var title = $("#Title").val();
