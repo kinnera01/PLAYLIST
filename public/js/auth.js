@@ -109,7 +109,15 @@ $("#Addvideo").on("click", function () {
     videoids.forEach(element => {
       // youtubeids.push(element.youtubeId);
       console.log(element);
-      addToPlaylist(element);
+      // addToPlaylist(element);
+      function myLoop(element) {
+        addToPlaylist(element);
+        setTimeout(function() {
+            counter++;
+            if(counter < links.length)
+               myLoop(links[counter]);
+        }, 3000);
+  }
     });
   })
  
