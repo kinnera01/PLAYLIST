@@ -9,14 +9,16 @@ var client = new SolrNode({
     protocol: 'http'
 });
  
-
+var info;
 module.exports = function(app) {
   // Get all examples
    app.get("/", function(req, res) {
     res.render("index");
   });
-app.post("/api/songs",function(req,res){
+app.post("/songs",function(req,res){
   console.log(req.body);
+  info=req.body;
+  
 })
 // app.get('/getProduct',
 //  function (req, res) 
