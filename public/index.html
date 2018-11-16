@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <style>
+        body{
+          padding: 50px;
+         background-image: url("https://i.pinimg.com/originals/b5/3b/fe/b53bfecf20eab2012dfa7a4f6017a814.jpg");
+          background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        }
+        h5{
+          color: bisque
+        }
+        label{
+          color: #ce844a !important;
+          font-size: 20px  !important;
+        }
+        #listofgenres{
+          color: aliceblue
+        }
+      input{
+        color:#63894F !important;
+      }
+      span #status,h6{
+        color: #637BAB !important;
+      }
+      #status{
+        word-break: break-all;
+      }
+      .valign-wrapper {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+      }
+      #add{
+          margin-right:450px;
+      }
+    
+      </style>
+
+    <div class="row">
+        <div id="login-container" class="pre-auth">
+            <h5>This application requires access to your YouTube account. Please
+                <a href="#" id="login-link">authorize</a> to continue.</h5>
+        </div>
+        <form class="col s8">
+            <div class="row" id="buttons">
+                <div class="input-field col s10">
+                    <input placeholder="Placeholder" id="Title" value=" " type="text" class="validate">
+                    <label for="Playlist Name">Playlist_Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <input id="Description" placeholder="Description" value="" type="text" class="validate">
+                    <label for="Description">Playlist Description</label>
+                </div>
+            </div>
+            <div class="center-align">
+                <a class="btn-floating btn-large waves-effect waves-light red" disabled id="playlist-button">Create
+                    Playlist</a>
+            </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <input id="playlist-id" type="text" name='playid' value='' placeholder="Playlist ID" class="validate">
+                    <label for="PlaylistId">Current Playlist Id</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <input id="year" placeholder="Song Year" type="number" value="" name="year" class="validate">
+                    <label for="year">Year</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10">
+                        <label>Genre</label>
+                    <select class="browser-default" id="myDropdown">
+                    </select>
+                </div>
+                </div>
+                       
+        </form>
+        <h5>Playlist: </h5>
+        <span id="playlist-title"></span>
+        <p id="playlist-description"></p>
+        <p id="playlist-Id"></p>
+        <div id="playlist-container" class="col s4">
+            <h6>
+                <span id="status">No Videos</span></h6>
+        </div>
+    </div>
+        <div class="row">
+        <div class="center-align" id="add">
+                <a class="btn-floating center-align btn-large waves-effect waves-light red" id="Addvideo"><i class="material-icons">add</i>Add
+                    Songs to playlist</a>
+            </div>
+        </div>
+       
+    
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="/js/auth.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+        });
+    </script>
+</body>
+
+</html>

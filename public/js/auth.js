@@ -3,9 +3,12 @@ var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube'
 ];
 var videoids;
-
-googleApiClientReady = function() {
-  gapi.auth.init(function() {
+var genreoption;
+$('#myDropdown').change(function() {
+ genreoption=$('#myDropdown option:selected').val()
+   });
+googleApiClientReady = function () {
+  gapi.auth.init(function () {
     window.setTimeout(checkAuth, 1);
   });
 }
@@ -22,7 +25,6 @@ function checkAuth() {
 function handleAuthResult(authResult) {
   console.log("in auth res")
   if (authResult && !authResult.error) {
-
     $('.pre-auth').hide();
     $('.post-auth').show();
     loadAPIClientInterfaces();
@@ -53,10 +55,10 @@ function enableForm() {
   $("#playlist-button").attr("disabled", false);
 }
 
-$("#playlist-button").on("click", function () {
+$("#playlist-button").on("click", function() {
   var title = $("#Title").val();
   var description = $("#Description").val();
-console.log(title,description)
+  console.log(title, description);
   var request = gapi.client.youtube.playlists.insert({
     part: "snippet,status",
     resource: {
@@ -83,11 +85,11 @@ console.log(title,description)
   });
 
 })
-$("#Addvideo").on("click", function () {
+$("#Addvideo").on("click", function() {
   var result = {
     id: $("#playlist-id").val(),
     year: $("#year").val(),
-    videoid: $("#video-id").val()
+    genre: genreoption,
   }
   console.log(result);
   $.post("/songs", result, function (data) {
@@ -102,16 +104,18 @@ $("#Addvideo").on("click", function () {
     //  myLoop(element)
     //   });
     var counter = 0;
+
     function addVideosToPlaylist() {
       myLoop(data[0]);
     }
+
     function myLoop(video_id) {
       addToPlaylist(video_id);
       setTimeout(function () {
         counter++;
         if (counter < data.length)
-console.log(data[counter])
-          myLoop(data[counter]);
+          console.log(data[counter])
+        myLoop(data[counter]);
       }, 1500);
     }
   })
@@ -145,25 +149,19 @@ console.log(data[counter])
       }
     });
     //console.log(request)
-    request.execute(function(response) {
+    request.execute(function (response) {
       $("#status").append("<pre>" + JSON.stringify(response.result.id) + "</pre>" + "<br />");
     });
   }
 
-  // function addTheseVideosToPlaylist() {
-  //   var links = youtubeids;
-  //   var counter = 0;
-
-  //   function addVideosToPlaylist() {
-  //     myLoop(links[0]);
-  //   }
-
-  //   function myLoop(video_id) {
-  //     addToPlaylist(video_id);
-  //     setTimeout(function () {
-  //       counter++;
-  //       if (counter < links.length) myLoop(links[counter]);
-  //     }, 3000);
-  //   }
-  // }
 })
+
+$.get("/genres", function(data,status){
+
+  data.forEach(element => {
+    var $newOpt = $("<option>").attr("value",element.artistName).text(element.artistName);
+    console.log(element.artistName)
+    $("#myDropdown").append($newOpt);
+  });
+ 
+});

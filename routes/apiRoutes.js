@@ -8,6 +8,12 @@ var client = new SolrNode({
     core: "discogs_data_test",
     protocol: "http"
 });
+var queryclient = new SolrNode({
+  host: "aurora.cs.rutgers.edu",
+    port: "8181",
+    core: "similar_genres",
+    protocol: "http"
+});
 var youtubeids = [];
 //ar info;
 module.exports = function(app) {
@@ -19,7 +25,7 @@ app.post("/songs",function(req,res){
   console.log(req.body)
   var strQuery = client
   .query()
-  .q({ releaseDate: req.body.year })
+  .q({ releaseDate: req.body.year,artistName:req.body.genre })
   .sort({ viewcountRate: "desc" })
   .start(0)
   .rows(20);
@@ -38,5 +44,20 @@ client.search(strQuery, function(err, result) {
    res.send(youtubeids);
 });
 })
-
+app.get("/genres",function(req,res){
+  var strQuery = queryclient
+  .query()
+  .q({ '*' : '*' })
+  .fl('artistName')
+  .start(0)
+  .rows(2147483647);
+   queryclient.search(strQuery, function(err, result) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    // console.log("Response:", result.response.docs);
+    res.send( result.response.docs)
+  });
+})
 };
